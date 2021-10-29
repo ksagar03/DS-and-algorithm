@@ -59,7 +59,7 @@ using namespace std;
 // }
 // int main()
 // {
-//     int n,p;
+//     int n,p; 
 //     cin>>n>>p;
 //     cout<<power(n,p);
 // }
@@ -79,7 +79,7 @@ using namespace std;
 //     cin>>n;
 //     cout<<fact(n);
 // }
-//fibonacci number 
+// fibonacci number 
 // int fib(int n)
 // {
 //     if(n==0 || n==1)
@@ -317,20 +317,20 @@ using namespace std;
 //      permutation(s,"");
 //  }
 //                     //number of posible ways one can reach end of the maze
-int maze(int n,int i,int j)
-{
-    if(i==n-1 && j==n-1)
-    {
-        return 1;
-    }
-    else if(i>=n || j>=n)
-    {
-        return 0;
-    }
-    return maze(n,i+1,j)+maze(n,i,j+1);
-}
-int main()
-{
-    int n,i,j;
-    cout<<maze(3,0,0);
-}
+// int maze(int n,int i,int j)
+// {
+//     if(i==n-1 && j==n-1)
+//     {
+//         return 1;
+//     }
+//     else if(i>=n || j>=n)
+//     {
+//         return 0;
+//     }
+//     return maze(n,i+1,j)+maze(n,i,j+1);
+// }
+// int main()
+// {
+//     int n,i,j;
+//     cout<<maze(3,0,0);
+// }

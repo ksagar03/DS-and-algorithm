@@ -1,9 +1,8 @@
-# 1 "C:\\Users\\k sagar\\c++\\c++(learning)\\amstrong_no.cpp"
+# 1 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
 # 1 "C:\\Users\\k sagar\\c++\\c++(learning)//"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "C:\\Users\\k sagar\\c++\\c++(learning)\\amstrong_no.cpp"
-
+# 1 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
 # 1 "c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\mingw32\\bits\\stdc++.h" 1 3
 # 33 "c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\mingw32\\bits\\stdc++.h" 3
 # 1 "c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\cassert" 1 3
@@ -93666,29 +93665,304 @@ namespace std
 
 }
 # 123 "c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\mingw32\\bits\\stdc++.h" 2 3
-# 3 "C:\\Users\\k sagar\\c++\\c++(learning)\\amstrong_no.cpp" 2
+# 2 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 2
 
-# 3 "C:\\Users\\k sagar\\c++\\c++(learning)\\amstrong_no.cpp"
+# 2 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
 using namespace std;
+
+struct node
+{
+    int data;
+    struct node* left;
+    struct node* right;
+    node(int val)
+    {
+        data=val;
+        left=
+# 12 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+            __null
+# 12 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                ;
+        right=
+# 13 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+             __null
+# 13 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                 ;
+    }
+};
+
+void preorder(struct node* root)
+{
+    if(root==
+# 19 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+            __null
+# 19 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                )
+    {
+        return;
+    }
+    cout<<root->data<<"->";
+    preorder(root->left);
+    preorder(root->right);
+
+
+
+}
+void inorder(struct node* root)
+{
+    if(root==
+# 32 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+            __null
+# 32 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                )
+    {
+        return;
+    }
+    inorder(root->left);
+    cout<<root->data<<"->";
+    inorder(root->right);
+
+
+
+}
+void postorder(struct node* root)
+{
+    if(root==
+# 45 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+            __null
+# 45 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                )
+    {
+        return;
+    }
+    postorder(root->left);
+    postorder(root->right);
+    cout<<root->data<<"->";
+
+
+}
+
+int curr_pos(int ino[],int start,int end,int curr)
+{
+    for(int i=start;i<=end;i++)
+    {
+        if (ino[i]==curr)
+        {
+            return i;
+        }
+    }
+ return -1;
+}
+
+
+node* buildtreepost(int post[],int ino[],int start,int end)
+{
+    static int idxy=11;
+
+    if(start>end)
+    {
+        return 
+# 75 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+              __null
+# 75 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                  ;
+    }
+
+    int curr= post[idxy];
+    idxy--;
+    node* root=new node(curr);
+    int poss=curr_pos(ino,start,end,curr);
+
+    if(start==end)
+    {
+        return root;
+    }
+    root->right=buildtreepost(post,ino,poss+1,end);
+    root->left=buildtreepost(post,ino,start,poss-1);
+
+    return root;
+
+
+}
+
+node* buildtree(int pre[],int ino[],int start,int end)
+{
+    static int idx=0;
+    if(start>end)
+    {
+        return 
+# 100 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+              __null
+# 100 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                  ;
+    }
+    int curr=pre[idx];
+    idx++;
+    node* root=new node(curr);
+    int pos=curr_pos(ino,start,end,curr);
+    if(start==end)
+    {
+        return root;
+    }
+    root->left=buildtree(pre,ino,start,pos-1);
+    root->right=buildtree(pre,ino,pos+1,end);
+
+    return root;
+}
+# 137 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+int count_nodes(node *root)
+{
+    if(root==
+# 139 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+            __null
+# 139 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                )
+    {
+        return 0;
+    }
+
+    return count_nodes(root->left) +count_nodes(root->right)+root->data;
+
+}
+
+
+int sum_of_kth_level(node* root, int k)
+{
+    if(root==
+# 151 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+            __null
+# 151 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                )
+    {
+        return -1;
+    }
+    queue<node*> Q;
+    Q.push(root);
+    Q.push(
+# 157 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+          __null
+# 157 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+              );
+    int level=0;
+    int sum=0;
+    while(!Q.empty())
+    {
+        node* current=Q.front();
+        Q.pop();
+    if (current!=
+# 164 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+                __null
+# 164 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                    )
+    {
+        if(level==k)
+        {
+            sum+=current->data;
+        }
+        if(current->left!=
+# 170 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+                         __null
+# 170 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                             )
+        {
+            Q.push(current->left);
+        }
+        if(current->right!=
+# 174 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+                          __null
+# 174 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                              )
+        {
+            Q.push(current->right);
+        }
+        else if(!Q.empty())
+        {
+             Q.push(
+# 180 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+                   __null
+# 180 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                       );
+                level++;
+        }
+    }
+
+    }
+    return sum;
+}
+
+
+void leveltraversal(node* head)
+{
+    if(head==
+# 192 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+            __null
+# 192 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                )
+    {
+        return;
+    }
+    queue<node*> q;
+    q.push(head);
+    q.push(
+# 198 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+          __null
+# 198 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+              );
+    while(!q.empty())
+    {
+        node* curr=q.front();
+         q.pop();
+        if (curr!=
+# 203 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+                 __null
+# 203 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                     )
+        {
+            cout<<curr->data<<",";
+            if(curr->left!=
+# 206 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+                          __null
+# 206 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                              )
+            {
+                q.push(curr->left);
+            }
+            if(curr->right!=
+# 210 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+                           __null
+# 210 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                               )
+            {
+                q.push(curr->right);
+            }
+        }
+        else if(!q.empty())
+        {
+            q.push(
+# 217 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp" 3 4
+                  __null
+# 217 "C:\\Users\\k sagar\\c++\\c++(learning)\\binary_tree.cpp"
+                      );
+        }
+    }
+
+}
+
 int main()
 {
-    int n,x;
-    cin>>n;
-    int z=n;
-    int sum=0;
-    while(n>0)
-    { x=n%10;
-     sum+=pow(x,3);
-     n=n/10;
-    }
-    cout<<sum<<endl;
-    if(sum==z)
-    {
-        cout<<"the number "<<z<<" is a amstrong number";
-    }
-    else
-    {
-        cout<<"the number "<<z<<" is not a amstrong number";
-    }
-return 0;
+    struct node* root;
+    root=new node(1);
+    root->left=new node(2);
+    root->right=new node(3);
+    root->left->left=new node(4);
+    root->left->right=new node(5);
+    root->right->left=new node(6);
+    root->right->right=new node(7);
+
+
+
+
+
+
+cout<<sum_of_kth_level(root, 1);
 }

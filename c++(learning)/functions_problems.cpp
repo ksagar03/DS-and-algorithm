@@ -1,6 +1,6 @@
-#include<iostream>
-#include<cmath>
+#include<bits/stdc++.h>
 using namespace std;
+// to find whether the number is prime or not 
 // bool itsprime(int n){
 //     for (int i=2;i<=sqrt(n);i++)
 //     {
@@ -24,7 +24,7 @@ using namespace std;
 //     }
 // return 0;
 // }
-// to find th factoril of the no;
+// to find th factorial of the no;
 // int fac(int num)
 // {   int facto=1;
 //     for(int i=num;i>0;i--) 

@@ -4,17 +4,15 @@ using namespace std;
 // int main()
 // {
 //     int n,x;
-//     cout<<"enter the no:";
 //     cin>>n;
 //     int z=n;
-//     cout<<endl;
 //     int sum=0;
 //     while(n>0)
 //     { x=n%10;
 //      sum+=pow(x,3);
 //      n=n/10;
 //     }
-//     cout<<sum;
+//     cout<<sum<<endl;
 //     if(sum==z)
 //     {
 //         cout<<"the number "<<z<<" is a amstrong number";

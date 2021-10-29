@@ -52,47 +52,58 @@ using namespace std;
 //1.default constructor 
 //2. parameterized constructor 
 //3. copy constructor
-class details{
-    public:
-    string name;
-    int std;
-    int rollno;
-    details()
-    {
-        cout<<"default constructor"<<endl;;
-    }
-    details(string a,int b, int c)// parameterized constructor
-    {
-        name=a;
-        std=b;
-        rollno=c;
-    }
-    details(details &s)//copy constructor 
-    {
-        name=s.name;
-        std=s.std;
-        rollno=s.rollno;
-    }
-    //destructor is used to destory all obect that we have created using constructor 
-    ~details(){
-        cout<<"destructor called "<<endl;// in the o/p we get 4times destructor called because we have
-        // created 4 objects(s,z,x,y)
-    }
-   void printinf()
-    {
-        cout<<" name= "<<name<<" ";
-        cout<<" std= "<<std<<" ";
-        cout<<" rollno= "<<rollno<<" ";
-        cout<<endl;
-    }
-};
-int main()
-{
-    details s("sagar",12,4060990);
-    s.printinf();
-    details z("sai",12,234522);
-    z.printinf();
-    details x;
-    details y=s;
-    y.printinf();
-}
+// class details{
+//     public:
+//     string name;
+//     int std;
+//     int rollno;
+//     details()
+//     {
+//         cout<<"default constructor"<<endl;;
+//     }
+//     details(string a,int b, int c)// parameterized constructor
+//     {
+//         name=a;
+//         std=b;
+//         rollno=c;
+//     }
+//     details(details &s)//copy constructor 
+//     {
+//         name=s.name;
+//         std=s.std;
+//         rollno=s.rollno;
+//     }
+//     //destructor is used to destory all obect that we have created using constructor 
+//     ~details(){
+//         cout<<"destructor called "<<endl;// in the o/p we get 4times destructor called because we have
+//         // created 4 objects(s,z,x,y)
+//     }
+//    void printinf()
+//     {
+//         cout<<" name= "<<name<<" ";
+//         cout<<" std= "<<std<<" ";
+//         cout<<" rollno= "<<rollno<<" ";
+//         cout<<endl;
+//     }
+// };
+// int main()
+// {
+//     details s("sagar",12,4060990);
+//     s.printinf();
+//     details z("sai",12,234522);
+//     z.printinf();
+//     details x;
+//     details y=s;
+//     y.printinf();
+// }
+                        // polymorphism
+// polymorphism means more than one form 
+/* it has two types 
+    1. compile time-
+    1.1 function overloading-same function name can be used more than one time.
+    1.2 operator overloading-the ability to provide the operators with a special meaning for a data type   
+    2. run time 
+    2.1 virtual function-if same fun is defined in both base class and derived class then then at runtime
+        compiler will get confused to choose which function there we use virtual function i.e the 
+        function which has virtual name in front of it will not be selected.
+     */

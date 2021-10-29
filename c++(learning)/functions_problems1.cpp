@@ -54,7 +54,7 @@ using namespace std;
 // {
 //     int n;
 //     cin>>n;
-//     cout<<"the decimalvalue of the given octal no is "<<otod(n); 
+//     cout<<"the decimal value of the given octal no is "<<otod(n); 
 // }
 // hexadecimal to decimal(???????????)
 // int otod(int num)
@@ -85,7 +85,7 @@ void dtob(int num)
             {
             x[i]=num%2;
             }
-        i=i+1;
+        i=i+1;                           //   (???????????????????????)
     }while((num=num/2)>=0);
     int y=*(&x + 1) - x;
     for(int i=y;i>0;i--)
